@@ -1,6 +1,21 @@
 <?php
 $data = $_POST;
 
+
+// echo "<pre>";
+// var_dump($data['colors_object']);
+// echo "</pre>";
+
+$data['colors_object'] = explode("|", $data['colors_object']);
+foreach($data['colors_object'] as $colors)
+{
+    $colors = json_decode($colors);
+    echo "<pre>";
+    var_dump($colors);
+    echo "</pre>";
+
+}
+
 echo "<pre>";
 var_dump($data);
 echo "</pre>";

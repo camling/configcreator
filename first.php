@@ -109,12 +109,36 @@ function age_checkboxes($age_url)
     <div class="container">
         <form method="POST" action="create_config.php">
             <input type="hidden" id="library_id" name="library_id" value="<?php echo $library_id; ?>"/>
-            <input type="hidden" id="library_name" name="library_name" value="<?php echo $library_name;?>"/>
-            
+            <input type="hidden" id="library_name" name="name" value="<?php echo $library_name;?>"/>
+            <input type="hidden" id="colors_object" name="colors_object" value='{"body": "red", "text": "black"}, | {"body": "red", "text": "black"}, | {"body": "red", "text": "black"}'/>
+    
+
+            <input type="hidden" name='colors_1[1]["body"]' value='1'/>
+            <input type="hidden" name='colors_1[1]["text"]' value='white'/>
+            <input type="hidden" name='colors_1[2]["body"]' value='4'/>
+            <input type="hidden" name='colors_1[2]["text"]' value='black'/>
+    
+
+
             <div class="input_elements">
+
                 <fieldset>
-                    <label for="maincolor">Choose Main Color</label>
-                    <input type="color" id="maincolor" name="maincolor" value="#1d666c"/>
+                    <label for="colors[]">Choose Main Color</label>
+                    <input type="color" id="colors_1" name="colors[]" value="#1d666c"/>
+                    <input type="color" id="colors_2" name="colors[]" value="#1d666c"/>
+                    <input type="color" id="colors_3" name="colors[]" value="#1d666c"/>
+                </fieldset>
+                <fieldset>
+                    <label for="rotation_speed">Enter slide rotation speed in seconds</label>
+                    <input type="number" id="rotation_speed" name="rotation_speed" value="30"/>
+                </fieldset>
+                <fieldset>
+                    <label for="font">Enter fonts with a comma between each</label>
+                    <input type="text" id="font" name="font" value="Arial"/>
+                </fieldset>
+                <fieldset>
+                    <label for="alert">Enter an alert if desired</label>
+                    <input type="text" id="alert" name="alert" value=""/>
                 </fieldset>
                 <fieldset>
                     <label for="start">Start date:</label>
@@ -149,27 +173,10 @@ function age_checkboxes($age_url)
                     <input type="checkbox" name="ongoing" id="ongoing" value="1" class="form-control">
                 </fieldset>
                 <fieldset>  
-                    <label for="keyword">Keyword</label>
-                    <input type="text" name="keyword" id="keyword" class="form-control">
-                </fieldset>
-                <fieldset>  
-                    <label for="cal_event_id">Single Event ID</label>
-                    <input type="number" name="caleventid" id="cal_event_id" class="form-control">
-                </fieldset>
-                <fieldset>  
-                    <label for="column_num">Columns 1-3</label>
-                    <input type="number" name="column_num" id="column_num" class="form-control" value="1" min="1" max="3">
-                </fieldset>
-                <fieldset>  
                     <label for="qr_codes">Add QR codes</label>
                     <input type="checkbox" name="qr_codes" id="qr_codes" value="true" class="form-control">
                 </fieldset>
-                <fieldset>  
-                <input type="radio" id="download" name="download" value="download">
-                <label for="download">Download</label><br>
-                <input type="radio" id="show" name="download" value="show" checked >
-                <label for="show">Show</label><br>
-</fieldset>  
+                
             </div>
             <input type="submit" name="create" value="Create Config File"/>
         </form>
