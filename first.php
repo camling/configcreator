@@ -40,7 +40,7 @@ function events_checkboxes($event_types_url)
     {
         foreach($xml as $event)
         {
-            echo '<input type="checkbox" name="event_type[]" value="'.$event->Id.'" id="'.$event->Id.'">';
+            echo '<input type="checkbox" name="event_type_ids[]" value="'.$event->Id.'" id="'.$event->Id.'">';
             echo '<label for="'.$event->Id.'">'.$event->Name.'</label><br>';
         }
     } 
@@ -89,11 +89,7 @@ function age_checkboxes($age_url)
 
 }
 
-
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -110,23 +106,22 @@ function age_checkboxes($age_url)
         <form method="POST" action="create_config.php">
             <input type="hidden" id="library_id" name="library_id" value="<?php echo $library_id; ?>"/>
             <input type="hidden" id="library_name" name="name" value="<?php echo $library_name;?>"/>
-            <input type="hidden" id="colors_object" name="colors_object" value='{"body": "red", "text": "black"}, | {"body": "red", "text": "black"}, | {"body": "red", "text": "black"}'/>
-    
-
-            <input type="hidden" name='colors_1[1]["body"]' value='1'/>
-            <input type="hidden" name='colors_1[1]["text"]' value='white'/>
-            <input type="hidden" name='colors_1[2]["body"]' value='4'/>
-            <input type="hidden" name='colors_1[2]["text"]' value='black'/>
-    
-
-
+            
             <div class="input_elements">
 
                 <fieldset>
-                    <label for="colors[]">Choose Main Color</label>
-                    <input type="color" id="colors_1" name="colors[]" value="#1d666c"/>
-                    <input type="color" id="colors_2" name="colors[]" value="#1d666c"/>
-                    <input type="color" id="colors_3" name="colors[]" value="#1d666c"/>
+                    <label>Choose your Colors</label>
+                    <br>
+                    <label>Main Color : <input type="color" name="body_colors[]" value="#1d666c"/></label>
+                    <label>Text Color : <input type="color" name="text_colors[]" value="black"/></label>
+                    <br>
+                    <label>Main Color : <input type="color" name="body_colors[]" value="#1d666c"/></label>
+                    <label>Text Color : <input type="color" name="text_colors[]" value="black"/></label>
+                    <br>
+                    <label>Main Color : <input type="color" name="body_colors[]" value="#1d666c"/></label>
+                    <label>Text Color : <input type="color" name="text_colors[]" value="black"/></label>
+                    <br>
+                   <button id="add_color"></button>
                 </fieldset>
                 <fieldset>
                     <label for="rotation_speed">Enter slide rotation speed in seconds</label>
@@ -166,7 +161,7 @@ function age_checkboxes($age_url)
                 </fieldset>
                 <fieldset>  
                     <label for="featured">Show Only Featured Events</label>
-                    <input type="checkbox" name="featured" id="featured" value="1" class="form-control">
+                    <input type="checkbox" name="featured" id="featured" value="false" class="form-control">
                 </fieldset>
                 <fieldset>  
                     <label for="featured">Upload logo file</label>
@@ -175,11 +170,11 @@ function age_checkboxes($age_url)
 
                 <fieldset>  
                     <label for="ongoing">Include Ongoing Events</label>
-                    <input type="checkbox" name="ongoing" id="ongoing" value="1" class="form-control">
+                    <input type="checkbox" name="ongoing" id="ongoing" value="true" checked="true" class="form-control">
                 </fieldset>
                 <fieldset>  
                     <label for="qr_codes">Add QR codes</label>
-                    <input type="checkbox" name="show_qr_codes" id="qr_codes" value="true" class="form-control">
+                    <input type="checkbox" name="show_qr_codes" id="qr_codes" value="true" checked="true" class="form-control">
                 </fieldset>
                 
             </div>
@@ -276,11 +271,13 @@ function age_checkboxes($age_url)
         const SETWEEK = document.getElementById("setweek");
         const SETNEXTWEEK = document.getElementById("setnextweek");
         const SETMONTH = document.getElementById("setmonth");
-
+   
         SETDAY.addEventListener("click", setDates);
         SETWEEK.addEventListener("click", setDates);
         SETNEXTWEEK.addEventListener("click", setDates);
         SETMONTH.addEventListener("click", setDates);
+
+       
 
 
     </script>
