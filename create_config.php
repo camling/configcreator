@@ -1,6 +1,6 @@
 <?php
+header('Content-Type: application/json');
 $data = $_POST;
-
 
 class Colors {
     public $body;
@@ -90,10 +90,10 @@ $config_obj = new ConfigObj($data);
 // var_dump($config_obj);
 // echo "</pre>";
 
-$json_data = json_encode($config_obj,JSON_UNESCAPED_SLASHES);
+$json_data = json_encode($config_obj,JSON_PRETTY_PRINT);
 
-echo '<pre>' . print_r($json_data) . '</pre>';
+print_r($json_data);
 
-$bytes = file_put_contents("config_file.json", $json_data); 
-echo "The number of bytes written are $bytes.";
+$bytes = file_put_contents("main.json", $json_data); 
+
 ?>
