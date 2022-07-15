@@ -121,7 +121,7 @@ function age_checkboxes($age_url)
                 <button id="remove_color" disabled>Remove A Color</button>
                 <fieldset>
                     <label for="rotation_speed">Enter slide rotation speed in seconds</label>
-                    <input type="number" id="rotation_speed" name="rotation_speed" value="30"/>
+                    <input type="number" id="rotation_speed" name="rotation_speed" value="30" required/>
                 </fieldset>
                 <fieldset>
                     <label for="font">Enter fonts with a comma between each</label>
@@ -160,8 +160,8 @@ function age_checkboxes($age_url)
                     <input type="checkbox" name="featured" id="featured"  class="form-control">
                 </fieldset>
                 <fieldset>  
-                    <label for="featured">Upload logo file</label>
-                    <input type="file" id="logo" name="logo" accept="image/png, image/jpeg">
+                    <label for="logo">URL to logo image</label>
+                    <input type="url" id="logo" name="logo">
                 </fieldset>
 
                 <fieldset>  
