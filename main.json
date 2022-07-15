@@ -1,0 +1,22 @@
+{
+    "library_id": "mppl",
+    "name": "Mount Prospect Library",
+    "colors": [
+        {
+            "body": "#1d666c",
+            "text": "#000000"
+        }
+    ],
+    "rotation_speed": "60",
+    "font": "Arial",
+    "logo": "",
+    "alert": "",
+    "show_qr_code": true,
+    "event_type_ids": [],
+    "start_date": "2022-07-15",
+    "end_date": "2022-07-15",
+    "locations": [],
+    "age_groups": [],
+    "is_ongoing": true,
+    "only_featured_events": false
+}
