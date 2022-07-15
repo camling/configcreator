@@ -109,20 +109,16 @@ function age_checkboxes($age_url)
             
             <div class="input_elements">
 
-                <fieldset>
+                <fieldset id="color_picker_group">
                     <label>Choose your Colors</label>
                     <br>
                     <label>Main Color : <input type="color" name="body_colors[]" value="#1d666c"/></label>
                     <label>Text Color : <input type="color" name="text_colors[]" value="black"/></label>
                     <br>
-                    <label>Main Color : <input type="color" name="body_colors[]" value="#1d666c"/></label>
-                    <label>Text Color : <input type="color" name="text_colors[]" value="black"/></label>
-                    <br>
-                    <label>Main Color : <input type="color" name="body_colors[]" value="#1d666c"/></label>
-                    <label>Text Color : <input type="color" name="text_colors[]" value="black"/></label>
-                    <br>
-                   <button id="add_color"></button>
+                    
                 </fieldset>
+                <button id="add_color">Add A Color</button>
+                <button id="remove_color" disabled>Remove A Color</button>
                 <fieldset>
                     <label for="rotation_speed">Enter slide rotation speed in seconds</label>
                     <input type="number" id="rotation_speed" name="rotation_speed" value="30"/>
@@ -161,7 +157,7 @@ function age_checkboxes($age_url)
                 </fieldset>
                 <fieldset>  
                     <label for="featured">Show Only Featured Events</label>
-                    <input type="checkbox" name="featured" id="featured" value="false" class="form-control">
+                    <input type="checkbox" name="featured" id="featured"  class="form-control">
                 </fieldset>
                 <fieldset>  
                     <label for="featured">Upload logo file</label>
@@ -170,11 +166,11 @@ function age_checkboxes($age_url)
 
                 <fieldset>  
                     <label for="ongoing">Include Ongoing Events</label>
-                    <input type="checkbox" name="ongoing" id="ongoing" value="true" checked="true" class="form-control">
+                    <input type="checkbox" name="ongoing" id="ongoing"  checked="true" class="form-control">
                 </fieldset>
                 <fieldset>  
                     <label for="qr_codes">Add QR codes</label>
-                    <input type="checkbox" name="show_qr_codes" id="qr_codes" value="true" checked="true" class="form-control">
+                    <input type="checkbox" name="show_qr_codes" id="qr_codes"  checked="true" class="form-control">
                 </fieldset>
                 
             </div>
@@ -264,6 +260,47 @@ function age_checkboxes($age_url)
            
         }
 
+        function addColors()
+        {
+            let color_group = document.createElement("div");
+            let label_element_body = document.createElement("label");
+            let label_text_body = document.createTextNode(" Main Color: ");
+            let label_element_text = document.createElement("label");
+            let label_text_text = document.createTextNode(" Text Color: ");
+            let input_element_body = document.createElement("input");
+            let input_element_text = document.createElement("input");
+
+
+            color_group.classList.add("color_group");
+            input_element_body.type = "color";
+            input_element_body.name = "body_colors[]";
+            input_element_text.type = "color";
+            input_element_text.name = "text_colors[]";
+
+            label_element_body.appendChild(label_text_body);
+            label_element_text.appendChild(label_text_text);
+            label_element_body.appendChild(input_element_body);
+            label_element_text.appendChild(input_element_text);
+            color_group.appendChild(label_element_body);
+            color_group.appendChild(label_element_text);
+            COLORPICKERGROUP.appendChild(color_group);
+
+            REMOVECOLORBTN.disabled = false;
+
+        }
+
+        function removeColors()
+        {
+            let color_group_array = COLORPICKERGROUP.querySelectorAll(".color_group");
+            let last_color = color_group_array.length - 1;
+        
+            COLORPICKERGROUP.removeChild(COLORPICKERGROUP.lastChild);
+            if(color_group_array.length == 1)
+            {
+                REMOVECOLORBTN.disabled = true;
+            }
+        }
+
 
         const STARTDATE = document.getElementById("start");
         const ENDDATE = document.getElementById("end");
@@ -271,13 +308,24 @@ function age_checkboxes($age_url)
         const SETWEEK = document.getElementById("setweek");
         const SETNEXTWEEK = document.getElementById("setnextweek");
         const SETMONTH = document.getElementById("setmonth");
+        const ADDCOLORBTN = document.getElementById("add_color");
+        const REMOVECOLORBTN = document.getElementById("remove_color");
+        const COLORPICKERGROUP = document.getElementById("color_picker_group");
    
         SETDAY.addEventListener("click", setDates);
         SETWEEK.addEventListener("click", setDates);
         SETNEXTWEEK.addEventListener("click", setDates);
         SETMONTH.addEventListener("click", setDates);
+        ADDCOLORBTN.addEventListener("click", (e) => 
+        {   e.preventDefault(); 
+            addColors();  
+        });
 
-       
+        REMOVECOLORBTN.addEventListener("click", (e) => 
+        {   e.preventDefault(); 
+            removeColors();  
+        });
+
 
 
     </script>
