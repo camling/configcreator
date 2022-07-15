@@ -142,9 +142,9 @@ function age_checkboxes($age_url)
                 </fieldset>
                 <fieldset>
                     <label for="start">Start date:</label>
-                    <input type="date" id="start" name="calendar-start" value="<?php echo $date;?>"  min="<?php echo $year.'-01-01';?>" max="<?php echo $year.'-12-31'?>"/>
+                    <input type="date" id="start" name="start_date" value="<?php echo $date;?>"  min="<?php echo $year.'-01-01';?>" max="<?php echo $year.'-12-31'?>"/>
                         <label for="end">End date:</label>
-                        <input type="date" id="end" name="calendar-end"
+                        <input type="date" id="end" name="end_date"
                         value="<?php echo $date;?>" 
                         min="<?php echo $year.'-01-01';?>" max="<?php echo $year.'-12-31'?>"/>
                         <input type="button" id="setday" name="setday" value="Day"/>
@@ -169,12 +169,17 @@ function age_checkboxes($age_url)
                     <input type="checkbox" name="featured" id="featured" value="1" class="form-control">
                 </fieldset>
                 <fieldset>  
+                    <label for="featured">Upload logo file</label>
+                    <input type="file" id="logo" name="logo" accept="image/png, image/jpeg">
+                </fieldset>
+
+                <fieldset>  
                     <label for="ongoing">Include Ongoing Events</label>
                     <input type="checkbox" name="ongoing" id="ongoing" value="1" class="form-control">
                 </fieldset>
                 <fieldset>  
                     <label for="qr_codes">Add QR codes</label>
-                    <input type="checkbox" name="qr_codes" id="qr_codes" value="true" class="form-control">
+                    <input type="checkbox" name="show_qr_codes" id="qr_codes" value="true" class="form-control">
                 </fieldset>
                 
             </div>
